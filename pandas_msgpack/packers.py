@@ -43,6 +43,7 @@ from dateutil.parser import parse
 import os
 from textwrap import dedent
 import warnings
+from pathlib import Path
 
 import numpy as np
 from pandas import compat
@@ -63,7 +64,6 @@ from pandas import (
     MultiIndex,
     Float64Index,
     Int64Index,
-    Panel,
     RangeIndex,
     PeriodIndex,
     DatetimeIndex,
@@ -72,7 +72,7 @@ from pandas import (
     CategoricalIndex,
 )
 
-string_types = (str,)
+path_types = (str, Path)
 binary_type = (bytes,)
 
 from io import BytesIO
@@ -179,7 +179,7 @@ def to_msgpack(path_or_buf, *args, **kwargs):
         for a in args:
             fh.write(pack(a, **kwargs))
 
-    if isinstance(path_or_buf, string_types):
+    if isinstance(path_or_buf, path_types):
         with open(path_or_buf, mode) as fh:
             writer(fh)
     elif path_or_buf is None:
@@ -218,7 +218,7 @@ def read_msgpack(path_or_buf, encoding="utf-8", iterator=False, **kwargs):
         return l
 
     # see if we have an actual file
-    if isinstance(path_or_buf, string_types):
+    if isinstance(path_or_buf, path_types):
         try:
             exists = os.path.exists(path_or_buf)
         except (TypeError, ValueError):
@@ -814,7 +814,7 @@ class Iterator(object):
         try:
 
             # see if we have an actual file
-            if isinstance(self.path, string_types):
+            if isinstance(self.path, path_types):
 
                 try:
                     path_exists = os.path.exists(self.path)
