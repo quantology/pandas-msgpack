@@ -1,35 +1,36 @@
 pandas-msgpack
 ==============
 
-|Travis Build Status| |Appveyor Build Status| |Version Status| |Coverage Status|
+|Travis Build Status| 
 
 **pandas-msgpack** is a package providing an interface to msgpack from pandas
+
+In 2019, pandas deprecated the msgpack io interface,
+suggesting people use pyarrow instead.
+
+Unfortunatly, pyarrow doesn't do columns-containing-tuples,
+and we do have older msgpacked DataFrames that we still need to unpack.
+
+Somebody had already forked the msgpack code earlier, 
+but it had bitrotted away from the current pandas internal.
+
+This fork restores it to mostly-working order - notably,
+all datetime and sparse array handling have been removed.
+Datetime, because the numpy dtype no longer stores timezones,
+and it wasn't important to our particular mission,
+and sparse arrays because they have been deprecated anyway
+(and were not important to our mission).
 
 
 Installation
 ------------
-
-
-Install latest release version via conda
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. code-block:: shell
-
-   $ conda install pandas-msgpack --channel conda-forge
-
-Install latest release version via pip
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. code-block:: shell
-
-   $ pip install pandas-msgpack
 
 Install latest development version
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: shell
 
-    $ pip install git+https://github.com/pydata/pandas-msgpack.git
+    $ pip install git+https://github.com/TyberiusPrime/pandas-msgpack.git
 
 
 Usage
@@ -37,11 +38,5 @@ Usage
 
 See the `pandas-msgpack documentation <https://pandas-msgpack.readthedocs.io/>`_ for more details.
 
-.. |Travis Build Status| image:: https://travis-ci.org/pydata/pandas-msgpack.svg?branch=master
-   :target: https://travis-ci.org/pydata/pandas-msgpack
-.. |Appveyor Build Status| image:: https://ci.appveyor.com/api/projects/status/5716aqchorgwmwxf/branch/master?svg=true
-   :target: https://ci.appveyor.com/project/jreback/pandas-msgpack
-.. |Version Status| image:: https://img.shields.io/pypi/v/pandas-msgpack.svg
-   :target: https://pypi.python.org/pypi/pandas-msgpack/
-.. |Coverage Status| image:: https://img.shields.io/codecov/c/github/pydata/pandas-msgpack.svg
-   :target: https://codecov.io/gh/pydata/pandas-msgpack/
+.. |Travis Build Status| image:: https://travis-ci.org/TyberiusPrime/pandas-msgpack.svg?branch=master
+   :target: https://travis-ci.org/TyberiusPrime/pandas-msgpack
