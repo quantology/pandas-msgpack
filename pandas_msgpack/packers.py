@@ -339,7 +339,7 @@ def unconvert(values, dtype, compress=None):
     dtype = pandas_dtype(dtype).base
 
     if not as_is_ext:
-        values = values.encode("latin1")
+        values = values[1]#.encode("latin1")
 
     if compress:
         if compress == u"zlib":

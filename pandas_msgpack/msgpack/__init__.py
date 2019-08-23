@@ -2,8 +2,8 @@
 
 from collections import namedtuple
 
-from pandas_msgpack.msgpack.exceptions import *  # noqa
-from pandas_msgpack.msgpack._version import version  # noqa
+from pandas.io.msgpack.exceptions import *  # noqa
+from pandas.io.msgpack._version import version  # noqa
 
 
 class ExtType(namedtuple("ExtType", "code data")):
@@ -16,13 +16,13 @@ class ExtType(namedtuple("ExtType", "code data")):
             raise TypeError("data must be bytes")
         if not 0 <= code <= 127:
             raise ValueError("code must be 0~127")
-        return super(ExtType, cls).__new__(cls, code, data)
+        return super().__new__(cls, code, data)
 
 
 import os  # noqa
 
-from pandas_msgpack.msgpack._packer import Packer  # noqa
-from pandas_msgpack.msgpack._unpacker import unpack, unpackb, Unpacker  # noqa
+from pandas.io.msgpack._packer import Packer  # noqa
+from pandas.io.msgpack._unpacker import unpack, unpackb, Unpacker  # noqa
 
 
 def pack(o, stream, **kwargs):
