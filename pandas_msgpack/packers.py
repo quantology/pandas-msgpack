@@ -49,12 +49,15 @@ from pandas import compat
 
 from pandas.api.types import is_categorical_dtype, is_object_dtype, pandas_dtype
 from pandas.core.dtypes.common import needs_i8_conversion
+from pandas.core.internals.blocks import DatetimeTZBlock
+from pandas.core.arrays import DatetimeArray
 
 from pandas import (
     Timestamp,
     Period,
     PeriodIndex,
     Series,
+    DatetimeTZDtype,
     DataFrame,  # noqa
     Index,
     MultiIndex,
@@ -579,17 +582,12 @@ def decode(obj):
             # legacy
             return globals()[obj[u"klass"]](data, **d)
         else:
-            values = np.array(data, dtype='int64', copy=False)
 
-            result = object.__new__(PeriodIndex)
-            result._data = values
-            result.name = d['name']
             freq = d['freq']
             if freq is None:
                 raise ValueError('freq is not specified and cannot be inferred')
-            result._freq = Period._maybe_convert_freq(freq)
-            result._reset_identity()
-            return result
+            values = [Period(ordinal=x, freq=freq) for x in data]
+            return PeriodIndex(values)
             #return globals()[obj[u"klass"]]._from_ordinals(data, **d)
     elif typ == u"datetime_index":
         data = unconvert(obj[u"data"], np.int64, obj.get(u"compress"))
@@ -636,8 +634,12 @@ def decode(obj):
                 placement = b[u"locs"]
             else:
                 placement = axes[0].get_indexer(b[u"items"])
+            klass  = getattr(internals, b[u"klass"])
+            if klass == DatetimeTZBlock:
+                raise ValueError("Lost the ability to parse datetime with timezone. Sorry")
+                
             return make_block(
-                values=values,
+                values=values.copy(),
                 klass=getattr(internals, b[u"klass"]),
                 placement=placement,
                 dtype=b[u"dtype"],
