@@ -26,7 +26,8 @@ try:
     import Cython
     from Cython.Build import cythonize
 except ImportError:
-    raise ImportError("cython is required for building")
+    #raise ImportError("cython is required for building")
+    cythonize=lambda x: x
 
 # args to ignore warnings
 if is_platform_windows():
