@@ -15,7 +15,7 @@ PY3 = True
 from pandas import (
     Series,
     DataFrame,
-    Panel,
+    #Panel,
     MultiIndex,
     bdate_range,
     date_range,
@@ -877,7 +877,7 @@ TestPackers
     minimum_structure = {
         "series": ["float", "int", "mixed", "ts", "mi", "dup"],
         "frame": ["float", "int", "mixed", "mi"],
-        "panel": ["float"],
+        #"panel": ["float"],
         "index": ["int", "date", "period"],
         "mi": ["reg2"],
     }

@@ -19,4 +19,9 @@ from ._version import get_versions
 versions = get_versions()
 __version__ = versions.get("closest-tag", versions["version"])
 __git_revision__ = versions["full-revisionid"]
+
+
+pandas.DataFrame.to_msgpack = lambda self, path=None, **kwargs: to_msgpack(path, self, **kwargs)
+
 del get_versions, versions, pv, LooseVersion, pandas
+

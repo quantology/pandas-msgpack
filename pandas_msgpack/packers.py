@@ -214,6 +214,8 @@ def read_msgpack(path_or_buf, encoding="utf-8", iterator=False, **kwargs):
     def read(fh):
         l = list(unpack(fh, encoding=encoding, **kwargs))
         if len(l) == 1:
+            if isinstance(l[0], np.ndarray):
+                return l[0].copy()
             return l[0]
         return l
 
@@ -591,7 +593,7 @@ def decode(obj):
             #return globals()[obj[u"klass"]]._from_ordinals(data, **d)
     elif typ == u"datetime_index":
         data = unconvert(obj[u"data"], np.int64, obj.get(u"compress"))
-        d = dict(name=obj[u"name"], freq=obj[u"freq"], verify_integrity=False)
+        d = dict(name=obj[u"name"], freq=obj[u"freq"])#, verify_integrity=False)
         result = globals()[obj[u"klass"]](data, **d)
         tz = obj[u"tz"]
 
