@@ -2,9 +2,9 @@ sudo: false
 language: python
 
 env:
-  - PYTHON=2.7 PANDAS=0.19.2
-  - PYTHON=3.4 PANDAS=0.19.2
-  - PYTHON=3.5 PANDAS=0.19.2 COVERAGE='true'
+  - PYTHON=2.7 PANDAS=0.25.3
+  - PYTHON=3.4 PANDAS=0.25.3
+  - PYTHON=3.5 PANDAS=0.25.3 COVERAGE='true'
   - PYTHON=3.6 PANDAS='master' LINT='true'
 
 before_install:
