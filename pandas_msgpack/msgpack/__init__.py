@@ -2,8 +2,8 @@
 
 from collections import namedtuple
 
-from pandas.io.msgpack.exceptions import *  # noqa
-from pandas.io.msgpack._version import version  # noqa
+from .exceptions import *  # noqa
+from ._version import version  # noqa
 
 
 class ExtType(namedtuple("ExtType", "code data")):
@@ -21,9 +21,9 @@ class ExtType(namedtuple("ExtType", "code data")):
 
 import os  # noqa
 
-from pandas.io.msgpack._packer import Packer  # noqa
-from pandas.io.msgpack._unpacker import unpack, unpackb, Unpacker  # noqa
 
+from ._packer import Packer  # noqa
+from ._unpacker import unpack, unpackb, Unpacker  # noqa
 
 def pack(o, stream, **kwargs):
     """

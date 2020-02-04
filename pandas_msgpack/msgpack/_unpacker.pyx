@@ -17,9 +17,9 @@ from libc.stdlib cimport free, malloc
 from libc.string cimport memcpy, memmove
 from libc.limits cimport INT_MAX
 
-from pandas.io.msgpack.exceptions import (BufferFull, OutOfData,
+from .exceptions import (BufferFull, OutOfData,
                                           UnpackValueError, ExtraData)
-from pandas.io.msgpack import ExtType
+from . import ExtType
 
 
 cdef extern from "../includes/unpack.h":

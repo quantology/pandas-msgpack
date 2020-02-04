@@ -12,8 +12,8 @@ from cpython cimport (
     PyUnicode_AsEncodedString)
 from libc.stdlib cimport free, malloc
 
-from pandas.io.msgpack.exceptions import PackValueError
-from pandas.io.msgpack import ExtType
+from .exceptions import PackValueError
+from . import ExtType
 import numpy as np
 
 
