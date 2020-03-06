@@ -80,7 +80,7 @@ INSTALL_REQUIRES = (
 
 setup(
     name=NAME,
-    version=versioneer.get_version(),
+    #version=versioneer.get_version(),
     cmdclass=cmdclass,
     description="Pandas interface to msgpack",
     long_description=readme(),

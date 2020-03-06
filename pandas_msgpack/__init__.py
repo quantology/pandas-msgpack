@@ -14,14 +14,16 @@ _is_pandas_legacy_version = pv.version[1] == 19 and len(pv.version) == 3
 from .packers import to_msgpack, read_msgpack
 
 # versioning
-from ._version import get_versions
+#from ._version import get_versions
 
-versions = get_versions()
-__version__ = versions.get("closest-tag", versions["version"])
-__git_revision__ = versions["full-revisionid"]
+#versions = get_versions()
+#__version__ = versions.get("closest-tag", versions["version"])
+#__git_revision__ = versions["full-revisionid"]
+
+__version__ = "0.1"
 
 
 pandas.DataFrame.to_msgpack = lambda self, path=None, **kwargs: to_msgpack(path, self, **kwargs)
 
-del get_versions, versions, pv, LooseVersion, pandas
+del pv, LooseVersion, pandas#get_versions, versions, 
 
