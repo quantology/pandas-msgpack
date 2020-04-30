@@ -24,7 +24,6 @@ import os  # noqa
 from ._packer import Packer  # noqa
 from ._unpacker import unpack, unpackb, Unpacker  # noqa
 
-
 def pack(o, stream, **kwargs):
     """
     Pack object `o` and write it to `stream`

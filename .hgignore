@@ -1,0 +1,8 @@
+syntax:glob
+*.egg-info
+build/
+__pycache__
+*.so
+pandas_msgpack/msgpack/_packer.cpp
+pandas_msgpack/msgpack/_unpacker.cpp
+
