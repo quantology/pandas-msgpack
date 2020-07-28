@@ -19,8 +19,8 @@ def is_platform_mac():
     return sys.platform == 'darwin'
 
 # versioning
-import versioneer
-cmdclass = versioneer.get_cmdclass()
+#import versioneer
+#cmdclass = versioneer.get_cmdclass()
 
 try:
     import Cython
@@ -82,7 +82,7 @@ INSTALL_REQUIRES = (
 setup(
     name=NAME,
     #version=versioneer.get_version(),
-    cmdclass=cmdclass,
+    #cmdclass=cmdclass,
     description="Pandas interface to msgpack",
     long_description=readme(),
     license='BSD License',
