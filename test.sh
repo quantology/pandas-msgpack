@@ -1,2 +1,2 @@
 #!/bin/sh
-pytest pandas_msgpack "$@"
+pytest mbf_pandas_msgpack "$@"

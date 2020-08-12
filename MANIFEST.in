@@ -3,7 +3,7 @@ include README.rst
 include LICENSE.md
 include setup.py
 
-graft pandas_msgpack
+graft mbf_pandas_msgpack
 
 global-exclude *.so
 global-exclude *.pyd
@@ -15,4 +15,4 @@ global-exclude .DS_Store
 global-exclude *.png
 
 include versioneer.py
-include pandas_msgpack/_version.py
+include mbf_pandas_msgpack/_version.py

@@ -14,7 +14,7 @@ environment:
     # /E:ON and /V:ON options are not enabled in the batch script intepreter
     # See: http://stackoverflow.com/a/13751649/163740
     CMD_IN_ENV: "cmd /E:ON /V:ON /C .\\ci\\run_with_env.cmd"
-    clone_folder: C:\projects\pandas-msgpack
+    clone_folder: C:\projects\mbf_mbf_pandas-msgpack
 
   matrix:
 
@@ -73,21 +73,21 @@ install:
   - cmd: conda info -a
 
   # create our env
-  - cmd: conda create -n pandas-msgpack python=%PYTHON_VERSION% pandas cython pytest
-  - cmd: activate pandas-msgpack
-  - cmd: conda list -n pandas-msgpack
+  - cmd: conda create -n mbf_pandas-msgpack python=%PYTHON_VERSION% pandas cython pytest
+  - cmd: activate mbf_pandas-msgpack
+  - cmd: conda list -n mbf_pandas-msgpack
 
   # build wheels
   - cmd: '%CMD_IN_ENV% python setup.py bdist_wheel'
 
   # install
-  - pip install --no-index --find-links=.\dist\ pandas-msgpack
+  - pip install --no-index --find-links=.\dist\ mbf_pandas-msgpack
 
 test_script:
   # tests
-  - cmd: activate pandas-msgpack
+  - cmd: activate mbf_pandas-msgpack
   - cmd: cd c:\\projects
-  - cmd: pytest --pyargs pandas_msgpack -v
+  - cmd: pytest --pyargs mbf_pandas_msgpack -v
 
 artifacts:
   - path: dist\*

@@ -18,7 +18,7 @@ Generally compression will increase the writing time.
 .. ipython:: python
 
    import pandas as pd
-   from pandas_msgpack import to_msgpack, read_msgpack
+   from mbf_pandas_msgpack import to_msgpack, read_msgpack
 
    df = pd.DataFrame({'A': np.arange(100000),
                       'B': np.random.randn(100000),

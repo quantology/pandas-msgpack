@@ -1,3 +1,3 @@
 :: test on windows
 
-pytest pandas_msgpack %*
+pytest mbf_pandas_msgpack %*

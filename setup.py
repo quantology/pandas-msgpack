@@ -7,7 +7,7 @@ import pkg_resources
 from distutils.extension import Extension
 from distutils.command.build_ext import build_ext as build_ext
 
-NAME = 'pandas-msgpack'
+NAME = 'mbf-pandas-msgpack'
 
 def is_platform_windows():
     return sys.platform == 'win32' or sys.platform == 'cygwin'
@@ -42,21 +42,21 @@ else:
     macros = [('__LITTLE_ENDIAN__', '1')]
 
 extensions = []
-packer_ext = Extension('pandas_msgpack.msgpack._packer',
-                        depends=['pandas_msgpack/includes/pack.h',
-                                 'pandas_msgpack/includes/pack_template.h'],
-                        sources = ['pandas_msgpack/msgpack/_packer.pyx'],
+packer_ext = Extension('mbf_pandas_msgpack.msgpack._packer',
+                        depends=['mbf_pandas_msgpack/includes/pack.h',
+                                 'mbf_pandas_msgpack/includes/pack_template.h'],
+                        sources = ['mbf_pandas_msgpack/msgpack/_packer.pyx'],
                         language='c++',
-                        include_dirs=['pandas_msgack/includes'],
+                        include_dirs=['mbf_pandas_msgack/includes'],
                         define_macros=macros,
                         extra_compile_args=extra_compile_args)
-unpacker_ext = Extension('pandas_msgpack.msgpack._unpacker',
-                        depends=['pandas_msgpack/includes/unpack.h',
-                                 'pandas_msgpack/includes/unpack_define.h',
-                                 'pandas_msgpack/includes/unpack_template.h'],
-                        sources = ['pandas_msgpack/msgpack/_unpacker.pyx'],
+unpacker_ext = Extension('mbf_pandas_msgpack.msgpack._unpacker',
+                        depends=['mbf_pandas_msgpack/includes/unpack.h',
+                                 'mbf_pandas_msgpack/includes/unpack_define.h',
+                                 'mbf_pandas_msgpack/includes/unpack_template.h'],
+                        sources = ['mbf_pandas_msgpack/msgpack/_unpacker.pyx'],
                          language='c++',
-                        include_dirs=['pandas_msgpack/includes'],
+                        include_dirs=['mbf_pandas_msgpack/includes'],
                         define_macros=macros,
                         extra_compile_args=extra_compile_args)
 extensions.append(packer_ext)
@@ -65,9 +65,9 @@ extensions.append(unpacker_ext)
 #----------------------------------------------------------------------
 # util
 # extension for pseudo-safely moving bytes into mutable buffers
-_move_ext = Extension('pandas_msgpack._move',
+_move_ext = Extension('mbf_pandas_msgpack._move',
                       depends=[],
-                      sources=['pandas_msgpack/move.c'])
+                      sources=['mbf_pandas_msgpack/move.c'])
 extensions.append(_move_ext)
 
 
@@ -106,9 +106,9 @@ setup(
     ext_modules=cythonize(extensions),
     keywords='data',
     install_requires=INSTALL_REQUIRES,
-    packages=['pandas_msgpack',
-              'pandas_msgpack.includes',
-              'pandas_msgpack.msgpack',
-              'pandas_msgpack.tests'],
+    packages=['mbf_pandas_msgpack',
+              'mbf_pandas_msgpack.includes',
+              'mbf_pandas_msgpack.msgpack',
+              'mbf_pandas_msgpack.tests'],
     test_suite='tests',
 )

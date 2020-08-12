@@ -1,4 +1,4 @@
-.. currentmodule:: pandas_msgpack
+.. currentmodule:: mbf_pandas_msgpack
 .. _api:
 
 *************

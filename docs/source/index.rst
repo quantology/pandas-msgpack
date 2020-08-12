@@ -6,7 +6,7 @@
 Welcome to pandas-msgpack's documentation!
 ==========================================
 
-The :mod:`pandas_msgpack` module provides an interface from `pandas https://pandas.pydata.org`
+The :mod:`mbf_pandas_msgpack` module provides an interface from `pandas https://pandas.pydata.org`
 to the `msgpack <http://msgpack.org/index.html>`__ library. This is a lightweight portable
 binary format, similar to binary JSON, that is highly space efficient, and provides good performance
 both on the writing (serialization), and reading (deserialization).

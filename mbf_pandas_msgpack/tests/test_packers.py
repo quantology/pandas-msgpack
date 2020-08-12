@@ -6,8 +6,8 @@ import numpy as np
 import sys
 from distutils.version import LooseVersion
 
-from pandas_msgpack import _is_pandas_legacy_version
-from pandas_msgpack import to_msgpack, read_msgpack
+from mbf_pandas_msgpack import _is_pandas_legacy_version
+from mbf_pandas_msgpack import to_msgpack, read_msgpack
 
 from pandas import compat
 
