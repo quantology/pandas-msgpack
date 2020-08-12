@@ -76,3 +76,5 @@ Thumbs.db
 
 # caches #
 .cache
+build
+__pycache__

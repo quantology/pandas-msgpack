@@ -109,6 +109,7 @@ setup(
     packages=['mbf_pandas_msgpack',
               'mbf_pandas_msgpack.includes',
               'mbf_pandas_msgpack.msgpack',
-              'mbf_pandas_msgpack.tests'],
-    test_suite='tests',
+              #'mbf_pandas_msgpack.tests'
+              ],
+    # test_suite='tests',
 )
