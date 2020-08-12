@@ -36,6 +36,8 @@ jobs:
       - name: Build wheels
         run: |
           python -m cibuildwheel --output-dir wheelhouse
+        env: 
+            CIBW_SKIP: cp27-*
       - uses: actions/upload-artifact@v2
         with:
           path: ./wheelhouse/*.whl
