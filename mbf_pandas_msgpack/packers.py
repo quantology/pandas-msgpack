@@ -307,7 +307,7 @@ def convert(values):
             return v.tolist()
 
         # convert to a bytes array
-        v = v.tostring()
+        v = v.tobytes()
         return ExtType(0, zlib.compress(v))
 
     elif compressor == "blosc":

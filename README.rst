@@ -30,13 +30,14 @@ Install latest development version
 
 .. code-block:: shell
 
-    $ pip install git+https://github.com/TyberiusPrime/pandas-msgpack.git
+    $ pip install mbf_pandas
 
 
 Usage
 -----
 
-See the `pandas-msgpack documentation <https://pandas-msgpack.readthedocs.io/>`_ for more details.
+See the `pandas-msgpack documentation <https://pandas-msgpack.readthedocs.io/>`_ for more details,
+just replace all :code:`import pandas_msgpack` with :code:`import mbf_pandas_msgpack`
 
 .. |Travis Build Status| image:: https://travis-ci.org/TyberiusPrime/pandas-msgpack.svg?branch=master
    :target: https://travis-ci.org/TyberiusPrime/pandas-msgpack
