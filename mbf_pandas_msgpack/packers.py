@@ -83,9 +83,18 @@ try:
     from pandas.errors import PerformanceWarning
 except ImportError:
     from pandas.core.common import PerformanceWarning
-from pandas.io.common import get_filepath_or_buffer
-from pandas.core.internals import BlockManager, make_block, _safe_reshape
+
+from pandas.core.internals import BlockManager, make_block
 import pandas.core.internals as internals
+
+try:
+    from pandas.io.common import get_filepath_or_buffer
+except ImportError:
+    from pandas.io.common import _get_filepath_or_buffer as get_filepath_or_buffer
+try:
+    from pandas.core.internals import _safe_reshape
+except ImportError:
+    from pandas.core.internals import safe_reshape as _safe_reshape
 
 from mbf_pandas_msgpack import _is_pandas_legacy_version
 from mbf_pandas_msgpack.msgpack import Unpacker as _Unpacker, Packer as _Packer, ExtType
